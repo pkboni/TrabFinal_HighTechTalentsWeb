@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+      <h3>
+         <a href = "{{ url_for('show_all_clientes') }}">Lista de Clientes</a>
+      </h3>
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+		
+      <h3>Clientes (<a href = "{{ url_for('new_cliente') }}">Cadastrar Novo Cliente
+         </a>)</h3>
+      
+      <table>
+         <thead>
+            <tr>
+               <th></th>
+               <th>Nome</th>
+               <th>Endereço</th>
+               <th>Data Nascimento</th>
+               <th>Genero</th>
+               <th>Documento</th>
+               <th>Tipo Documento</th>
+               <th></th>
+               <th></th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for cliente in clientes %}
+               <tr>
+                  <td><input type="hidden" name="id" enabled="false" value="{{ cliente.id }}"></td> 
+                  <td>{{ cliente.nome }}</td>
+                  <td>{{ cliente.endereco }}</td>
+                  <td>{{ cliente.data_nascimento }}</td>
+                  <td>{{ cliente.genero }}</td>
+                  <td>{{ cliente.documento }}</td>
+                  <td>{{ cliente.iddocumento }}</td>
+                  <th><a href="{{ url_for('update_cliente', id=cliente.id) }}">Editar</a></th>
+                  <th><a href="{{ url_for('cliente_delete', id=cliente.id) }}">Excluir</a></th>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </body>
+</html>
