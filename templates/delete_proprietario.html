@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <h3>Exclusão de Cliente</h3>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+
+      <form action = "" method = "POST">
+         <input type="hidden" name="id" value="{{ cliente.id }}" /><br>
+         Nome: {{ cliente.nome }}<br>
+         Endereço: {{ cliente.endereco }}<br>
+         Data Nascimento: {{ cliente.data_nascimento }}<br>
+         Sexo: {{ cliente.genero }}<br>
+         Documento: {{ cliente.documento }}<br>
+         Id Documento: {{ cliente.iddocumento }}<br>
+         <input type="submit" value="Excluir" />
+      </form>
+      <h3>
+         <a href = "{{ url_for('show_all_clientes') }}">Voltar para Lista</a>
+      </h3>
+   </body>
+</html>
