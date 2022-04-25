@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head></head>
+    <body>
+         <h3>
+             <a href = "{{ url_for('show_all_proprietarios') }}">Lista de Proprietarios</a>
+         </h3>
+      
+        <hr/>
+        {%- for message in get_flashed_messages() %}
+            {{ message }}
+        {%- endfor %}
+		
+        <h3>Proprietarios (<a href = "{{ url_for('new_proprietario') }}">Cadastrar Novo Proprietario</a>)</h3>
+        <h1>Lista de Proprietarios</h1>
+        <hr>
+        <table border="4">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                    <th>Data Nascimento</th>
+                    <th>Email</th>
+                    <th>Fone</th>
+                    <th>Documento de Identidade</th>
+                    <th>CPF</th>
+                    <th>ID Imovel</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proprietario in proprietarios %}
+                    <tr>
+                        <td><input type="hidden" name="id" enabled="false" value="{{ proprietario.id }}"></td> 
+                        <td>{{ proprietario.nome }}</td>
+                        <td>{{ proprietario.endereco }}</td>
+                        <td>{{ proprietario.data_nascimento }}</td>
+                        <td>{{ proprietario.email }}</td>
+                        <td>{{ proprietario.fone }}</td>
+                        <td>{{ proprietario.doc_identidade }}</td>
+                        <td>{{ proprietario.cpf }}</td>
+                        <td>{{ proprietario._id_imovel }}</td>
+                        <th><a href="{{ url_for('update_proprietario', id=proprietario.id) }}">Editar</a></th>
+                        <th><a href="{{ url_for('proprietario_delete', id=proprietario.id) }}">Excluir</a></th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/">Voltar</a>
+    </body>
+</html>

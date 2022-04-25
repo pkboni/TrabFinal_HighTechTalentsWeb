@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <h3>Exclusão de Contrato</h3>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+
+      <form action = "" method = "POST">
+         <input type="hidden" name="id" value="{{ contrato.id }}" /><br>
+         ID Cliente: {{ contrato._id_cliente }}<br>
+         ID Proprietario: {{ contrato._id_propriet }}<br>
+         ID Imovel: {{ contrato._id_imovel }}<br>
+         Data Assinatura: {{ contrato.data_assinat }}<br>
+         Valor do Aluguel: {{ contrato.valor_aluguel }}<br>
+         Data de Entrada no Imovel: {{ contrato.data_ent_imovel }}<br>
+         Duracao: {{ contrato.duracao }}<br>
+         Termos: {{ contrato.termos }}<br>
+         Numero de Registro: {{ contrato.num_regist }}<br>
+         <input type="submit" value="Excluir" />
+      </form>
+      <h3>
+         <a href = "{{ url_for('show_all_contratos') }}">Voltar para Lista</a>
+      </h3>
+   </body>
+</html>

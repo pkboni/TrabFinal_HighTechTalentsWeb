@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <h3>Exclusão de Imovel</h3>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+
+      <form action = "" method = "POST">
+         <input type="hidden" name="id" value="{{ imovel.id }}" /><br>
+         Proprietario: {{ imovel._id_propriet }}<br>
+         Contrato: {{ imovel._id_contrato }}<br>
+         Endereco Imovel: {{ imovel.ender_imovel }}<br>
+         CEP: {{ imovel.cep }}<br>
+         Descricao: {{ imovel.descric }}<br>
+         Area: {{ imovel.area }}<br>
+         Quantidade Quartos: {{ qtde_quartos }}<br>
+         Numero de Matricula: {{ num_matricula }}<br>
+         Numero de Inscricao Municipal: {{ num_insc_munic }}<br>
+         <input type="submit" value="Excluir" />
+      </form>
+      <h3>
+         <a href = "{{ url_for('show_all_imoveis') }}">Voltar para Lista</a>
+      </h3>
+   </body>
+</html>
